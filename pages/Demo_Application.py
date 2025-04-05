@@ -1,15 +1,3 @@
-import nltk
-import os
-
-# Create data directory if it doesn't exist
-nltk_data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'nltk_data')
-os.makedirs(nltk_data_dir, exist_ok=True)
-
-# Set NLTK data path
-nltk.data.path.append(nltk_data_dir)
-
-# Download required resources
-nltk.download('punkt', download_dir=nltk_data_dir)
 import streamlit as st
 import pandas as pd
 import nltk
