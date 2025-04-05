@@ -5,29 +5,29 @@ def create_argumentation_graph(df):
     import re
     import nltk
     from nltk.tokenize import sent_tokenize
+    from nltk.corpus import stopwords
+    from nltk.tokenize import word_tokenize
     from collections import defaultdict, Counter
     import numpy as np
     from sklearn.feature_extraction.text import TfidfVectorizer
-    import spacy
     import random
     import streamlit as st
-    import os
-    import importlib
     
-    # Function to set up spaCy
+    # Function to set up NLTK resources
     @st.cache_resource
-    def setup_spacy():
-        # Install spaCy model if not available
+    def setup_nltk():
         try:
-            import en_core_web_sm
-            return en_core_web_sm.load()
-        except ImportError:
-            os.system("pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.5.0/en_core_web_sm-3.5.0-py3-none-any.whl")
-            import en_core_web_sm
-            return en_core_web_sm.load()
+            nltk.data.find('tokenizers/punkt')
+        except LookupError:
+            nltk.download('punkt')
+        try:
+            nltk.data.find('corpora/stopwords')
+        except LookupError:
+            nltk.download('stopwords')
+        return True
     
-    # Get the NLP model
-    nlp = setup_spacy()
+    # Set up NLTK
+    setup_nltk()
    
     # Initialize colors for different argument types
     colors = {
@@ -91,36 +91,51 @@ def create_argumentation_graph(df):
         # Default to claim
         return 'claim'
     
-    # Function to extract key phrases from text
+    # Function to extract key phrases from text without spaCy
     def extract_key_phrases(text, max_phrases=3):
         if not text or len(text) < 5:
             return [""]
         
-        if nlp:
-            # Use spaCy for more sophisticated extraction
-            doc = nlp(text)
-            
-            # Extract noun phrases as potential key phrases
-            noun_phrases = []
-            for chunk in doc.noun_chunks:
-                if len(chunk.text.split()) <= 6:  # Limit to reasonable length
-                    noun_phrases.append(chunk.text)
-            
-            # If we have enough noun phrases, return them
-            if len(noun_phrases) >= max_phrases:
-                return noun_phrases[:max_phrases]
-            
-            # Otherwise, extract important sentences
-            sentences = sent_tokenize(text)
-            if len(sentences) >= max_phrases:
-                return [s[:50] + '...' if len(s) > 50 else s for s in sentences[:max_phrases]]
-        
-        # Fallback: just use the first sentence or part of it
+        # First try to extract using sentences
         sentences = sent_tokenize(text)
-        first_sent = sentences[0] if sentences else text
-        if len(first_sent) > 60:
-            return [first_sent[:60] + '...']
-        return [first_sent]
+        if sentences:
+            # Truncate long sentences
+            shortened_sentences = [s[:50] + '...' if len(s) > 50 else s for s in sentences[:max_phrases]]
+            if len(shortened_sentences) > 0:
+                return shortened_sentences
+        
+        # If we can't use sentences, try extracting noun phrases with TF-IDF
+        try:
+            # Tokenize the text
+            tokens = word_tokenize(text.lower())
+            # Remove stopwords
+            stop_words = set(stopwords.words('english'))
+            filtered_tokens = [w for w in tokens if w.isalnum() and w not in stop_words]
+            
+            # If we have enough tokens, use TF-IDF to find important words
+            if len(filtered_tokens) >= 3:
+                # Create bigrams and trigrams
+                bigrams = [' '.join(filtered_tokens[i:i+2]) for i in range(len(filtered_tokens)-1)]
+                trigrams = [' '.join(filtered_tokens[i:i+3]) for i in range(len(filtered_tokens)-2)]
+                
+                # Combine words, bigrams and trigrams
+                all_phrases = filtered_tokens + bigrams + trigrams
+                
+                # Use only phrases that actually appear in the text
+                valid_phrases = [p for p in all_phrases if p.lower() in text.lower()]
+                
+                # Sort by length (prefer longer phrases that contain more information)
+                valid_phrases.sort(key=len, reverse=True)
+                
+                if valid_phrases:
+                    return valid_phrases[:max_phrases]
+        except Exception:
+            pass  # Fall back to simpler methods if this fails
+        
+        # Fallback: just return the first part of the text
+        if len(text) > 60:
+            return [text[:60] + '...']
+        return [text]
     
     # Process each message to identify argument structure
     for i, row in data.iterrows():
