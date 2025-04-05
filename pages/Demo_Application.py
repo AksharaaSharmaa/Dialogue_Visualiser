@@ -1,29 +1,3 @@
-import os
-import nltk
-import sys
-
-# Add nltk_data to path in multiple ways to ensure it's found
-current_dir = os.path.dirname(os.path.abspath(__file__))
-repo_root = os.path.dirname(current_dir)  # Assuming your file is in a subdirectory
-
-# Add potential paths where nltk_data might be
-nltk.data.path.append(os.path.join(current_dir, 'nltk_data'))
-nltk.data.path.append(os.path.join(repo_root, 'nltk_data'))
-nltk.data.path.append('./nltk_data')
-nltk.data.path.append('../nltk_data')
-
-# Print the paths for debugging
-print("NLTK data paths:", nltk.data.path)
-
-# Verify if punkt is found
-try:
-    nltk.data.find('tokenizers/punkt')
-    print("Punkt tokenizer found successfully!")
-except LookupError as e:
-    print(f"Punkt tokenizer not found! Error: {e}")
-    # Only download if not found
-    nltk.download('punkt')
-
 import streamlit as st
 import pandas as pd
 import nltk
@@ -959,15 +933,36 @@ def analyze_sentiment(text):
         return {"compound": 0, "pos": 0, "neu": 0, "neg": 0}
 
 def extract_entities(text):
-    """Simple entity extraction."""
-    # This is a simplified version. In a real implementation,
-    # you might want to use spaCy or another NER tool
-    words = word_tokenize(text)
-    stop_words = set(stopwords.words('english'))
+    """Simple entity extraction with NLTK data handling."""
+    import nltk
+    import os
+    from nltk.tokenize import word_tokenize, sent_tokenize
+    from nltk.corpus import stopwords
+    
+    # Set up NLTK data path and download required resources if needed
+    try:
+        # First try to use the resources
+        words = word_tokenize(text)
+        sentences = sent_tokenize(text)
+        stop_words = set(stopwords.words('english'))
+    except LookupError:
+        # If resources are not found, download them
+        nltk_data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'nltk_data')
+        os.makedirs(nltk_data_dir, exist_ok=True)
+        
+        # Add this directory to nltk's search path
+        nltk.data.path.insert(0, nltk_data_dir)
+        
+        # Download required resources
+        nltk.download('punkt', download_dir=nltk_data_dir)
+        nltk.download('stopwords', download_dir=nltk_data_dir)
+        
+        # Now try again
+        words = word_tokenize(text)
+        sentences = sent_tokenize(text)
+        stop_words = set(stopwords.words('english'))
     
     # Simple heuristic: capitalized words not at the beginning of sentences
-    sentences = sent_tokenize(text)
-    
     entities = []
     for sentence in sentences:
         words = word_tokenize(sentence)
@@ -978,7 +973,7 @@ def extract_entities(text):
                 entities.append(word)
     
     return list(set(entities))
-
+    
 def extract_keywords(text, top_n=5):
     """Extract keywords from text."""
     words = word_tokenize(text.lower())
