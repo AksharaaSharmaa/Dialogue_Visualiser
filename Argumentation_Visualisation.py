@@ -10,16 +10,11 @@ def create_argumentation_graph(df):
     from sklearn.feature_extraction.text import TfidfVectorizer
     import spacy
     import random
+    import en_core_web_sm
 
-    try:
-        nlp = spacy.load('en_core_web_sm')
-    except OSError:
-        # If the model isn't downloaded, download it and then load
-        from spacy.cli import download
-        download('en_core_web_sm')
-        nlp = spacy.load('en_core_web_sm')
-
-    
+    # Direct loading from the imported package
+    nlp = en_core_web_sm.load()
+   
     # Initialize colors for different argument types
     colors = {
         'claim': '#1f77b4',       # Blue
