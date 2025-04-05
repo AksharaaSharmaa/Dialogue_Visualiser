@@ -10,16 +10,7 @@ def create_argumentation_graph(df):
     from sklearn.feature_extraction.text import TfidfVectorizer
     import spacy
     import random
-    
-    # Ensure we have necessary nltk resources
-    try:
-        import nltk
-        nltk.data.path.append('./nltk_data')  # Optional: custom download location
-        nltk.data.find('tokenizers/punkt')    # Check if 'punkt' is already available
-    except (LookupError, OSError):
-        nltk.download('punkt', download_dir='./nltk_data')  # Download if not available
-    
-    # Load spaCy model for NLP processing
+
     try:
         nlp = spacy.load('en_core_web_sm')
     except OSError:
