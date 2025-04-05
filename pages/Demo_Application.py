@@ -945,36 +945,15 @@ def analyze_sentiment(text):
         return {"compound": 0, "pos": 0, "neu": 0, "neg": 0}
 
 def extract_entities(text):
-    """Simple entity extraction with NLTK data handling."""
-    import nltk
-    import os
-    from nltk.tokenize import word_tokenize, sent_tokenize
-    from nltk.corpus import stopwords
-    
-    # Set up NLTK data path and download required resources if needed
-    try:
-        # First try to use the resources
-        words = word_tokenize(text)
-        sentences = sent_tokenize(text)
-        stop_words = set(stopwords.words('english'))
-    except LookupError:
-        # If resources are not found, download them
-        nltk_data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'nltk_data')
-        os.makedirs(nltk_data_dir, exist_ok=True)
-        
-        # Add this directory to nltk's search path
-        nltk.data.path.insert(0, nltk_data_dir)
-        
-        # Download required resources
-        nltk.download('punkt', download_dir=nltk_data_dir)
-        nltk.download('stopwords', download_dir=nltk_data_dir)
-        
-        # Now try again
-        words = word_tokenize(text)
-        sentences = sent_tokenize(text)
-        stop_words = set(stopwords.words('english'))
-    
+    """Simple entity extraction."""
+    # This is a simplified version. In a real implementation,
+    # you might want to use spaCy or another NER tool
+    words = word_tokenize(text)
+    stop_words = set(stopwords.words('english'))
+
     # Simple heuristic: capitalized words not at the beginning of sentences
+    sentences = sent_tokenize(text)
+
     entities = []
     for sentence in sentences:
         words = word_tokenize(sentence)
@@ -983,7 +962,7 @@ def extract_entities(text):
                 word.lower() not in stop_words and 
                 len(word) > 1):
                 entities.append(word)
-    
+
     return list(set(entities))
     
 def extract_keywords(text, top_n=5):
