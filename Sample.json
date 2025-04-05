@@ -1,0 +1,109 @@
+{
+    "messages": [
+      {
+        "id": 1,
+        "user": "Alex",
+        "text": "I believe we need stricter regulations on social media platforms to protect user privacy.",
+        "timestamp": "2025-02-01T10:00:00",
+        "reply_to": null
+      },
+      {
+        "id": 2,
+        "user": "Taylor",
+        "text": "I disagree. More regulations will just stifle innovation and free speech. Companies should self-regulate.",
+        "timestamp": "2025-02-01T10:05:00",
+        "reply_to": 1
+      },
+      {
+        "id": 3,
+        "user": "Jordan",
+        "text": "I see both sides, but data breaches are becoming too common. Maybe we need a middle ground with basic privacy standards?",
+        "timestamp": "2025-02-01T10:10:00",
+        "reply_to": 2
+      },
+      {
+        "id": 4,
+        "user": "Alex",
+        "text": "Exactly! I'm not saying we need excessive regulation, just basic protections. The EU's GDPR has worked well as a balanced approach.",
+        "timestamp": "2025-02-01T10:15:00",
+        "reply_to": 3
+      },
+      {
+        "id": 5,
+        "user": "Morgan",
+        "text": "But GDPR has been a nightmare for small businesses to implement. The compliance costs are huge and most users just click 'accept' anyway.",
+        "timestamp": "2025-02-01T10:20:00",
+        "reply_to": 4
+      },
+      {
+        "id": 6,
+        "user": "Taylor",
+        "text": "I agree with Morgan. These regulations just help big tech companies that can afford compliance teams while hurting smaller competitors.",
+        "timestamp": "2025-02-01T10:25:00",
+        "reply_to": 5
+      },
+      {
+        "id": 7,
+        "user": "Jordan",
+        "text": "What if we had tiered regulations based on company size? Small businesses could have simpler requirements while big tech faces stricter rules.",
+        "timestamp": "2025-02-01T10:30:00",
+        "reply_to": 6
+      },
+      {
+        "id": 8,
+        "user": "Alex",
+        "text": "That's a great idea! It would protect consumers while not burdening small businesses. I could support that approach.",
+        "timestamp": "2025-02-01T10:35:00",
+        "reply_to": 7
+      },
+      {
+        "id": 9,
+        "user": "Morgan",
+        "text": "I'm still concerned about implementation. Who decides what's 'small' vs 'large'? These definitions tend to get politicized.",
+        "timestamp": "2025-02-01T10:40:00",
+        "reply_to": 7
+      },
+      {
+        "id": 10,
+        "user": "Casey",
+        "text": "I'm more worried about data security than privacy. Recent hacks show that even with regulations, our data isn't safe anywhere online.",
+        "timestamp": "2025-02-01T10:45:00",
+        "reply_to": 1
+      },
+      {
+        "id": 11,
+        "user": "Taylor",
+        "text": "Casey raises a good point. Maybe we should focus on security standards rather than privacy regulations.",
+        "timestamp": "2025-02-01T10:50:00",
+        "reply_to": 10
+      },
+      {
+        "id": 12,
+        "user": "Alex",
+        "text": "Security and privacy go hand in hand though. We need both to truly protect users.",
+        "timestamp": "2025-02-01T10:55:00",
+        "reply_to": 11
+      },
+      {
+        "id": 13,
+        "user": "Jordan",
+        "text": "What about user education? No matter what regulations we have, people need to understand how their data is used.",
+        "timestamp": "2025-02-01T11:00:00",
+        "reply_to": 12
+      },
+      {
+        "id": 14,
+        "user": "Morgan",
+        "text": "User education is important, but we can't put all the burden on individuals. That's just victim blaming when things go wrong.",
+        "timestamp": "2025-02-01T11:05:00",
+        "reply_to": 13
+      },
+      {
+        "id": 15,
+        "user": "Casey",
+        "text": "I think we need a comprehensive approach: reasonable regulations, better security practices, AND user education.",
+        "timestamp": "2025-02-01T11:10:00",
+        "reply_to": 14
+      }
+    ]
+  }
