@@ -16,19 +16,31 @@ def create_topic_trees(df):
     from nltk.stem import WordNetLemmatizer
     import traceback
     
-    # Download necessary NLTK resources
-    try:
-        nltk.data.find('tokenizers/punkt')
-    except LookupError:
-        nltk.download('punkt')
-    try:
-        nltk.data.find('corpora/stopwords')
-    except LookupError:
-        nltk.download('stopwords')
-    try:
-        nltk.data.find('corpora/wordnet')
-    except LookupError:
-        nltk.download('wordnet')
+    import nltk
+    import os
+    
+    # Ensure nltk_data directory exists
+    nltk_data_path = os.path.join(os.getcwd(), "nltk_data")
+    if not os.path.exists(nltk_data_path):
+        os.makedirs(nltk_data_path)
+    
+    # Use local nltk_data path
+    nltk.data.path.append(nltk_data_path)
+    
+    # Download necessary NLTK resources if not already available
+    resources = {
+        'punkt': 'tokenizers/punkt',
+        'stopwords': 'corpora/stopwords',
+        'wordnet': 'corpora/wordnet',
+        'vader_lexicon': 'sentiment/vader_lexicon'
+    }
+    
+    for resource_name, resource_path in resources.items():
+        try:
+            nltk.data.find(resource_path)
+        except LookupError:
+            nltk.download(resource_name, download_dir=nltk_data_path)
+
     
     # Initialize lemmatizer and stopwords
     lemmatizer = WordNetLemmatizer()
