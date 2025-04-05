@@ -30,11 +30,7 @@ import traceback
 from Argumentation_Visualisation import create_argumentation_graph
 
 import nltk
-
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('vader_lexicon')
-nltk.download('wordnet')
+nltk.data.path.append('./nltk_data')
 
 
 # Enhanced CSS for a more beautiful and polished UI
