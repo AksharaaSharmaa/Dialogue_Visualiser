@@ -14,16 +14,20 @@ def create_argumentation_graph(df):
     # Ensure we have necessary nltk resources
     try:
         import nltk
-        nltk.data.path.append('./nltk_data')
-    except LookupError:
-        nltk.download('punkt', quiet=True)
+        nltk.data.path.append('./nltk_data')  # Optional: custom download location
+        nltk.data.find('tokenizers/punkt')    # Check if 'punkt' is already available
+    except (LookupError, OSError):
+        nltk.download('punkt', download_dir='./nltk_data')  # Download if not available
     
     # Load spaCy model for NLP processing
     try:
         nlp = spacy.load('en_core_web_sm')
-    except:
-        # If model isn't available, use a simpler approach
-        nlp = None
+    except OSError:
+        # If the model isn't downloaded, download it and then load
+        from spacy.cli import download
+        download('en_core_web_sm')
+        nlp = spacy.load('en_core_web_sm')
+
     
     # Initialize colors for different argument types
     colors = {
