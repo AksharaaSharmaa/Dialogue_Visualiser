@@ -15,16 +15,12 @@
 
 </div>
 
-<p align="center">
-  <img src="https://github.com/yourusername/discourse-lens/raw/main/assets/hero-image.png" alt="Discourse Lens Demo" width="800"/>
-</p>
-
 ## 🌟 Overview
 
 **Discourse Lens** is a powerful analytics tool designed to bring clarity to complex online conversations. It offers advanced visualization capabilities to understand discussion patterns, identify key influencers, track sentiment shifts, and uncover valuable insights across multiple platforms.
 
 <div align="center">
-  <img src="https://github.com/yourusername/discourse-lens/raw/main/assets/divider.png" alt="divider" width="400"/>
+  ✧･ﾟ: *✧･ﾟ:* 　⋆⭒˚｡⋆　 *:･ﾟ✧*:･ﾟ✧
 </div>
 
 ## ✨ Features
@@ -32,34 +28,34 @@
 <table>
   <tr>
     <td width="33%" align="center">
-      <img src="https://github.com/yourusername/discourse-lens/raw/main/assets/network-icon.png" width="100" height="100"/><br/>
+      <h3>🕸️</h3>
       <b>Network Visualization</b><br/>
       <sub>See how users interact, who influences conversations, and how ideas spread</sub>
     </td>
     <td width="33%" align="center">
-      <img src="https://github.com/yourusername/discourse-lens/raw/main/assets/trend-icon.png" width="100" height="100"/><br/>
+      <h3>📈</h3>
       <b>Trend Analysis</b><br/>
       <sub>Track how topics emerge, evolve, and fade over time</sub>
     </td>
     <td width="33%" align="center">
-      <img src="https://github.com/yourusername/discourse-lens/raw/main/assets/emotion-icon.png" width="100" height="100"/><br/>
+      <h3>🌈</h3>
       <b>Emotion Tracking</b><br/>
       <sub>Monitor emotional patterns and sentiment shifts</sub>
     </td>
   </tr>
   <tr>
     <td width="33%" align="center">
-      <img src="https://github.com/yourusername/discourse-lens/raw/main/assets/argument-icon.png" width="100" height="100"/><br/>
+      <h3>⚖️</h3>
       <b>Argument Analysis</b><br/>
       <sub>Trace the structure of arguments and counter-arguments</sub>
     </td>
     <td width="33%" align="center">
-      <img src="https://github.com/yourusername/discourse-lens/raw/main/assets/content-icon.png" width="100" height="100"/><br/>
+      <h3>📝</h3>
       <b>Content Analysis</b><br/>
       <sub>Identify key themes, topics, and linguistic patterns</sub>
     </td>
     <td width="33%" align="center">
-      <img src="https://github.com/yourusername/discourse-lens/raw/main/assets/cross-platform-icon.png" width="100" height="100"/><br/>
+      <h3>🔄</h3>
       <b>Cross-Platform</b><br/>
       <sub>Monitor discussions across multiple platforms with unified analytics</sub>
     </td>
@@ -77,7 +73,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/discourse-lens.git
+git clone https://github.com/discourse-lens/discourse-lens.git
 
 # Navigate to the project directory
 cd discourse-lens
@@ -89,12 +85,6 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## 🖥️ Demo
-
-<div align="center">
-  <img src="https://github.com/yourusername/discourse-lens/raw/main/assets/demo.gif" alt="Discourse Lens Demo" width="800"/>
-</div>
-
 ## 📊 Example Usage
 
 ```python
@@ -102,7 +92,7 @@ import pandas as pd
 from discourse_lens import DiscourseAnalyzer
 
 # Load your discussion data
-data = pd.read_csv("your_discussion_data.csv")
+data = pd.read_csv("discussion_data.csv")
 
 # Initialize the analyzer
 analyzer = DiscourseAnalyzer(data)
@@ -116,23 +106,56 @@ emotion_trends = analyzer.analyze_emotions()
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: Streamlit, HTML, CSS
-- **Data Processing**: Pandas, NumPy
-- **Visualization**: Plotly, NetworkX
-- **NLP**: NLTK, spaCy
-- **Machine Learning**: scikit-learn
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Frontend</b></td>
+      <td>Streamlit, HTML, CSS</td>
+    </tr>
+    <tr>
+      <td align="center"><b>Data Processing</b></td>
+      <td>Pandas, NumPy</td>
+    </tr>
+    <tr>
+      <td align="center"><b>Visualization</b></td>
+      <td>Plotly, NetworkX</td>
+    </tr>
+    <tr>
+      <td align="center"><b>NLP</b></td>
+      <td>NLTK, spaCy</td>
+    </tr>
+    <tr>
+      <td align="center"><b>Machine Learning</b></td>
+      <td>scikit-learn</td>
+    </tr>
+  </table>
+</div>
 
 ## 🔮 Future Roadmap
 
-- [ ] Real-time analysis capabilities
-- [ ] Integration with more social platforms
-- [ ] Advanced sentiment analysis models
-- [ ] Custom reporting features
-- [ ] User authentication and profile management
+<div align="center">
+  <table>
+    <tr>
+      <td>⏳ Real-time analysis capabilities</td>
+      <td>🔌 Integration with more social platforms</td>
+    </tr>
+    <tr>
+      <td>🧠 Advanced sentiment analysis models</td>
+      <td>📊 Custom reporting features</td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">👤 User authentication and profile management</td>
+    </tr>
+  </table>
+</div>
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+<div align="center">
+  <h3>How to Contribute</h3>
+</div>
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -142,7 +165,12 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+<div align="center">
+  <p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
+  <h3>MIT License</h3>
+  <p>Copyright © 2025 Discourse Lens</p>
+  <p>✨ Open Source & Free to Use ✨</p>
+</div>
 
 ## 👏 Acknowledgements
 
@@ -154,11 +182,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
   <p>
-    Made with ❤️ by <a href="https://github.com/aksharasharma">Akshara Sharma</a>
+    Made with ❤️ for the open-source community
   </p>
   <p>
-    <a href="https://twitter.com/yourusername"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter"></a>
-    <a href="https://linkedin.com/in/yourusername"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-    <a href="mailto:youremail@example.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
+    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
   </p>
+  <p>✧･ﾟ: *✧･ﾟ:* 　⋆⭒˚｡⋆　 *:･ﾟ✧*:･ﾟ✧</p>
 </div>
