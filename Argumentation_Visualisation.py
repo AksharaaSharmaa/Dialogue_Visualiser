@@ -12,8 +12,24 @@ def create_argumentation_graph(df):
     import random
     import en_core_web_sm
 
-    # Direct loading from the imported package
-    nlp = en_core_web_sm.load()
+    import streamlit as st
+    import os
+    import importlib
+    
+    # Function to set up spaCy
+    @st.cache_resource
+    def setup_spacy():
+        # Install spaCy model if not available
+        try:
+            import en_core_web_sm
+            return en_core_web_sm.load()
+        except ImportError:
+            os.system("pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.5.0/en_core_web_sm-3.5.0-py3-none-any.whl")
+            import en_core_web_sm
+            return en_core_web_sm.load()
+    
+    # Get the NLP model
+    nlp = setup_spacy()
    
     # Initialize colors for different argument types
     colors = {
