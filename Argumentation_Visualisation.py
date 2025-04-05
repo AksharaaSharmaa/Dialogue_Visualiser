@@ -10,8 +10,6 @@ def create_argumentation_graph(df):
     from sklearn.feature_extraction.text import TfidfVectorizer
     import spacy
     import random
-    import en_core_web_sm
-
     import streamlit as st
     import os
     import importlib
