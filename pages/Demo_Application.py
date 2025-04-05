@@ -599,14 +599,6 @@ st.markdown("""
 <div class="gradient-bg"></div>
 """, unsafe_allow_html=True)
 
-# Download necessary NLTK resources
-@st.cache_resource
-def load_nltk_resources():
-    nltk.download('vader_lexicon')
-    nltk.download('punkt')
-    nltk.download('stopwords')
-
-load_nltk_resources()
 
 st.title("👁〰👁 Dialogue Visualiser Tool")
 
