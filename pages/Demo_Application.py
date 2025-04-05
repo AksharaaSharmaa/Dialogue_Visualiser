@@ -1,9 +1,27 @@
+import os
 import nltk
+import sys
 
-# Make sure punkt is downloaded and available
+# Add nltk_data to path in multiple ways to ensure it's found
+current_dir = os.path.dirname(os.path.abspath(__file__))
+repo_root = os.path.dirname(current_dir)  # Assuming your file is in a subdirectory
+
+# Add potential paths where nltk_data might be
+nltk.data.path.append(os.path.join(current_dir, 'nltk_data'))
+nltk.data.path.append(os.path.join(repo_root, 'nltk_data'))
+nltk.data.path.append('./nltk_data')
+nltk.data.path.append('../nltk_data')
+
+# Print the paths for debugging
+print("NLTK data paths:", nltk.data.path)
+
+# Verify if punkt is found
 try:
     nltk.data.find('tokenizers/punkt')
-except LookupError:
+    print("Punkt tokenizer found successfully!")
+except LookupError as e:
+    print(f"Punkt tokenizer not found! Error: {e}")
+    # Only download if not found
     nltk.download('punkt')
 
 import streamlit as st
@@ -36,10 +54,6 @@ from Timeline_Visualisation import create_timeline_visualization
 from Topic_Visualisation import create_topic_trees
 import traceback
 from Argumentation_Visualisation import create_argumentation_graph
-
-import nltk
-nltk.data.path.append('./nltk_data')
-
 
 # Enhanced CSS for a more beautiful and polished UI
 st.markdown("""
