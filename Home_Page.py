@@ -10,6 +10,7 @@ nltk.data.path.append(nltk_data_dir)
 
 # Download required resources
 nltk.download('punkt', download_dir=nltk_data_dir)
+nltk.download('punkt_tab', download_dir=nltk_data_dir)
 
 import streamlit as st
 import pandas as pd
