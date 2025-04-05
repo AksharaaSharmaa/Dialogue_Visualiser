@@ -1,3 +1,11 @@
+import nltk
+
+# Make sure punkt is downloaded and available
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
 import streamlit as st
 import pandas as pd
 import nltk
