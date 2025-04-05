@@ -29,6 +29,14 @@ from Topic_Visualisation import create_topic_trees
 import traceback
 from Argumentation_Visualisation import create_argumentation_graph
 
+import nltk
+
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('vader_lexicon')
+nltk.download('wordnet')
+
+
 # Enhanced CSS for a more beautiful and polished UI
 st.markdown("""
 <style>
