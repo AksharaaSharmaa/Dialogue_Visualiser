@@ -1,161 +1,196 @@
-# Discourse Lens 🔍
+# Discourse Analyzer
 
-<div align="center">
-  
-  ![Discourse Lens Logo](https://img.shields.io/badge/🔍-Discourse%20Lens-FF7A00?style=for-the-badge)
-  
-  ### *Visualizing Online Discussions with Clarity and Insight*
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
-  [![Streamlit](https://img.shields.io/badge/Streamlit-1.21.0-FF4B4B)](https://streamlit.io/)
-  [![Pandas](https://img.shields.io/badge/Pandas-2.0.0-150458)](https://pandas.pydata.org/)
-  [![Made for GFOSS](https://img.shields.io/badge/Made%20for-GFOSS-orange)](https://gfoss.eu/)
-  [![GSoC 2025](https://img.shields.io/badge/GSoC-2025-green)](https://summerofcode.withgoogle.com/)
+## Overview
 
-</div>
+Discourse Analyzer is a comprehensive conversation analysis toolkit that helps researchers, community managers, and communication specialists understand the dynamics, structure, and content of discussions. By combining argumentation mapping, network visualization, timeline analysis, and topic modeling, this tool provides unprecedented insights into how conversations unfold.
 
-## 🌟 Overview
+This prototype was developed specifically for GFOSS as part of my proposal submission. You can view the working demo at: https://gsoc25-dialogue-visualiser-gfoss-prototype.streamlit.app/
 
-**Discourse Lens** is a powerful analytics tool designed to bring clarity to complex online conversations. It offers advanced visualization capabilities to understand discussion patterns, identify key influencers, track sentiment shifts, and uncover valuable insights across multiple platforms.
+![Dashboard Preview](https://via.placeholder.com/800x450)
 
-<div align="center">
-  ✧･ﾟ: *✧･ﾟ:* 　⋆⭒˚｡⋆　 *:･ﾟ✧*:･ﾟ✧
-</div>
+## 🌟 Key Features
 
-## ✨ Features
+### Argumentation Analysis
+- **Argument Classification**: Automatically categorizes text into different argument types:
+  - Claims (blue)
+  - Counterclaims (red)
+  - Evidence (green)
+  - Questions (purple)
+  - Agreements (cyan)
+  - Disagreements (pink)
+  - Clarifications (orange)
+- **Evidence-to-claim ratio calculation**
+- **Controversial claim detection** (claims with both agreements and disagreements)
+- **Persuasive user identification**
 
-<table>
-  <tr>
-    <td width="33%" align="center">
-      <h3>🕸️</h3>
-      <b>Network Visualization</b><br/>
-      <sub>See how users interact, who influences conversations, and how ideas spread</sub>
-    </td>
-    <td width="33%" align="center">
-      <h3>📈</h3>
-      <b>Trend Analysis</b><br/>
-      <sub>Track how topics emerge, evolve, and fade over time</sub>
-    </td>
-    <td width="33%" align="center">
-      <h3>🌈</h3>
-      <b>Emotion Tracking</b><br/>
-      <sub>Monitor emotional patterns and sentiment shifts</sub>
-    </td>
-  </tr>
-  <tr>
-    <td width="33%" align="center">
-      <h3>⚖️</h3>
-      <b>Argument Analysis</b><br/>
-      <sub>Trace the structure of arguments and counter-arguments</sub>
-    </td>
-    <td width="33%" align="center">
-      <h3>📝</h3>
-      <b>Content Analysis</b><br/>
-      <sub>Identify key themes, topics, and linguistic patterns</sub>
-    </td>
-    <td width="33%" align="center">
-      <h3>🔄</h3>
-      <b>Cross-Platform</b><br/>
-      <sub>Monitor discussions across multiple platforms with unified analytics</sub>
-    </td>
-  </tr>
-</table>
+### Network Visualization
+- **Interactive user interaction graphs** showing communication patterns
+- **Community detection** with colored convex hulls (Louvain method)
+- **Weighted connections** based on interaction frequency
+- **Sentiment-colored edges** (red: negative, blue: positive, gray: neutral)
+- **Dynamic node sizing** based on:
+  - Message count (activity level)
+  - Centrality (importance as a connector)
+  - Influence (eigenvector centrality)
+- **Curved Bezier edges** with directional arrows
 
-## 🚀 Getting Started
+### Conversation Timeline
+- **User activity tracking** on separate horizontal lines
+- **Message type differentiation** (questions, agreements, disagreements, emotional peaks)
+- **Topic shift detection** with vertical markers
+- **Time gap visualization** to segment conversations
+- **Interactive tooltips** with message details
 
-### Prerequisites
+### Topic Analysis
+- **Automated topic extraction** using NMF on TF-IDF vectors
+- **Topic evolution tracking** over time using sliding windows
+- **Topic relationship visualization**
+- **Key phrase extraction** from conversation content
+- **User topic engagement analysis**
 
-- Python 3.8+
-- Pip package manager
+### Sentiment Analysis
+- **Emotional tone tracking** throughout conversations
+- **Sentiment trend identification** and annotation
+- **Peak emotion detection**
+- **Positive/negative region visualization**
 
-### Installation
+### Advanced Analytics
+- **Echo chamber detection** and cross-community bridge identification
+- **Centrality metrics** (betweenness and eigenvector)
+- **Content-based clustering** using TF-IDF and K-means
+- **User participation statistics** and behavior analysis
+- **Network-level metrics** quantifying overall structure
+
+## 📊 Visualization Panels
+
+The tool generates a multi-panel interactive dashboard:
+
+1. **Argumentation Graph**: Shows the logical structure of discussions
+2. **Network View**: Displays user interaction patterns and communities
+3. **Conversation Timeline**: Visualizes message flow and types over time
+4. **Topic Flow**: Tracks how conversation topics evolve and relate
+5. **Sentiment Analysis**: Charts emotional tone throughout discussions
+
+## 🔧 Tech Stack
+
+### Core Libraries
+- **pandas**: Data manipulation and management
+- **NetworkX**: Graph creation and analysis
+- **Plotly**: Interactive visualization
+- **NLTK**: Natural language processing
+- **scikit-learn**: Machine learning (TF-IDF, NMF, K-means)
+- **NumPy**: Numerical operations
+- **Streamlit**: Web application framework
+
+### Analysis Components
+- **Python-Louvain**: Community detection
+- **SciPy**: Convex hull creation for community visualization
+- **Collections module**: Efficient interaction tracking
+
+## 📈 Output Formats
+
+The tool generates three types of output:
+1. **Interactive Visualization**: Multi-panel Plotly dashboard with hover tooltips
+2. **Metrics Dictionary**: Structured data containing all calculated metrics
+3. **Text Summary**: Markdown-formatted report summarizing key findings
+
+## 🔍 Data Sources
+
+This GFOSS prototype can analyze conversation data from multiple sources:
+- **ConvoKit**: Cornell Conversational Analysis Toolkit datasets
+- **YouTube discussions**: Comment threads from video discussions
+- **Text discussions**: Plain text conversation logs
+- **Reddit threads**: Posts and comment chains
+- **Website content**: Article text with associated comments
+- **Forum discussions**: Threaded conversation data
+
+## 🚀 Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/discourse-lens/discourse-lens.git
+git clone https://github.com/yourusername/discourse-analyzer.git
+cd discourse-analyzer
 
-# Navigate to the project directory
-cd discourse-lens
+# Create a virtual environment (optional but recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
-
-# Run the application
-streamlit run app.py
 ```
 
-## 📊 Example Usage
+## 💻 Usage
+
+### Basic Usage
 
 ```python
 import pandas as pd
-from discourse_lens import DiscourseAnalyzer
+from discourse_analyzer import DiscourseAnalyzer
 
-# Load your discussion data
-data = pd.read_csv("discussion_data.csv")
+# Load your conversation data
+data = pd.read_csv("your_conversation_data.csv")
 
 # Initialize the analyzer
 analyzer = DiscourseAnalyzer(data)
 
-# Generate network visualization
-analyzer.generate_network_graph(save_path="network_graph.html")
+# Generate the full analysis dashboard
+dashboard = analyzer.generate_dashboard()
 
-# Analyze emotional patterns
-emotion_trends = analyzer.analyze_emotions()
+# Save or display the dashboard
+dashboard.write_html("conversation_analysis.html")
+
+# Get the summary report
+summary = analyzer.generate_summary()
+print(summary)
 ```
 
-## 🛠️ Technology Stack
+### Starting the Web Interface
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>Frontend</b></td>
-      <td>Streamlit, HTML, CSS</td>
-    </tr>
-    <tr>
-      <td align="center"><b>Data Processing</b></td>
-      <td>Pandas, NumPy</td>
-    </tr>
-    <tr>
-      <td align="center"><b>Visualization</b></td>
-      <td>Plotly, NetworkX</td>
-    </tr>
-    <tr>
-      <td align="center"><b>NLP</b></td>
-      <td>NLTK, spaCy</td>
-    </tr>
-    <tr>
-      <td align="center"><b>Machine Learning</b></td>
-      <td>scikit-learn</td>
-    </tr>
-  </table>
-</div>
+```bash
+streamlit run app.py
+```
 
-## 🔮 Future Roadmap
+## 📋 Data Format
 
-<div align="center">
-  <table>
-    <tr>
-      <td>⏳ Real-time analysis capabilities</td>
-      <td>🔌 Integration with more social platforms</td>
-    </tr>
-    <tr>
-      <td>🧠 Advanced sentiment analysis models</td>
-      <td>📊 Custom reporting features</td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center">👤 User authentication and profile management</td>
-    </tr>
-  </table>
-</div>
+Your input data should be a CSV or DataFrame with these columns:
+- `user_id`: Identifier for the message sender
+- `timestamp`: When the message was sent
+- `message`: The text content of the message
+- `reply_to` (optional): ID of the message being replied to
+- `message_id` (optional): Unique identifier for each message
+
+## 📚 Example
+
+```python
+from discourse_analyzer import DiscourseAnalyzer
+import pandas as pd
+
+# Sample data
+data = pd.DataFrame({
+    'user_id': ['Alice', 'Bob', 'Charlie', 'Alice', 'Bob'],
+    'timestamp': ['2023-01-01 10:00:00', '2023-01-01 10:05:00', 
+                  '2023-01-01 10:10:00', '2023-01-01 10:15:00', 
+                  '2023-01-01 10:20:00'],
+    'message': ["I think we should use Python for this project.",
+                "I disagree, JavaScript would be better because of its ecosystem.",
+                "I agree with Alice. Python has better data science libraries.",
+                "We could use Python's pandas library for data processing.",
+                "Fair point about pandas, but JavaScript has great visualization libraries."],
+    'reply_to': [None, 0, 0, 2, 3]
+})
+
+# Analyze the conversation
+analyzer = DiscourseAnalyzer(data)
+analyzer.analyze()
+analyzer.generate_dashboard().write_html("example_analysis.html")
+```
 
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-<div align="center">
-  <h3>How to Contribute</h3>
-</div>
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -163,31 +198,14 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📜 License
+## 📄 License
 
-<div align="center">
-  <p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
-  <h3>MIT License</h3>
-  <p>Copyright © 2025 Discourse Lens</p>
-  <p>✨ Open Source & Free to Use ✨</p>
-</div>
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 👏 Acknowledgements
+## 📞 Contact
 
-- Google Summer of Code
-- GFOSS (Greek Free and Open Source Software Society)
-- All open-source libraries that made this project possible
+Project developed as a prototype for GFOSS as part of my GSoC 2025 proposal.
 
-<hr>
+---
 
-<div align="center">
-  <p>
-    Made with ❤️ for the open-source community
-  </p>
-  <p>
-    <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
-  </p>
-  <p>✧･ﾟ: *✧･ﾟ:* 　⋆⭒˚｡⋆　 *:･ﾟ✧*:･ﾟ✧</p>
-</div>
+Made with ❤️ for conversation analysts and researchers.
