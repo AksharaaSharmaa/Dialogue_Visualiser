@@ -13,7 +13,8 @@ def create_argumentation_graph(df):
     
     # Ensure we have necessary nltk resources
     try:
-        nltk.data.find('tokenizers/punkt')
+        import nltk
+        nltk.data.path.append('./nltk_data')
     except LookupError:
         nltk.download('punkt', quiet=True)
     
