@@ -933,25 +933,72 @@ def analyze_sentiment(text):
         return {"compound": 0, "pos": 0, "neu": 0, "neg": 0}
 
 def extract_entities(text):
-    """Simple entity extraction."""
-    # This is a simplified version. In a real implementation,
-    # you might want to use spaCy or another NER tool
-    words = word_tokenize(text)
-    stop_words = set(stopwords.words('english'))
-
-    # Simple heuristic: capitalized words not at the beginning of sentences
-    sentences = sent_tokenize(text)
-
-    entities = []
-    for sentence in sentences:
-        words = word_tokenize(sentence)
+    """Simple entity extraction with explicit PunktSentenceTokenizer."""
+    import nltk
+    import os
+    import re
+    from nltk.tokenize import word_tokenize
+    from nltk.corpus import stopwords
+    
+    # Download required resources
+    nltk_data_dir = '/mount/src/gsoc_25_dialogue_visualiser/nltk_data'
+    os.makedirs(nltk_data_dir, exist_ok=True)
+    nltk.data.path.insert(0, nltk_data_dir)
+    
+    try:
+        nltk.download('punkt', download_dir=nltk_data_dir)
+        nltk.download('stopwords', download_dir=nltk_data_dir)
+    except:
+        pass
+    
+    try:
+        # Avoid using sent_tokenize which requires punkt_tab
+        # Instead, use PunktSentenceTokenizer directly with English training
+        from nltk.tokenize.punkt import PunktSentenceTokenizer
+        tokenizer = PunktSentenceTokenizer()
+        sentences = tokenizer.tokenize(text)
+        
+        # Or as fallback, use regex for sentence splitting
+        if not sentences:
+            sentences = [s.strip() for s in re.split(r'[.!?]+', text) if s.strip()]
+        
+        # Get stopwords
+        try:
+            stop_words = set(stopwords.words('english'))
+        except:
+            # Fallback stopwords if NLTK fails
+            stop_words = {'the', 'a', 'an', 'and', 'but', 'or', 'for', 'nor', 'on', 
+                         'at', 'to', 'from', 'by', 'with', 'in', 'is', 'are', 'was', 'were'}
+        
+        # Extract entities
+        entities = []
+        for sentence in sentences:
+            try:
+                words = word_tokenize(sentence)
+            except:
+                # Fallback to simple splitting if word_tokenize fails
+                words = sentence.split()
+                
+            for i, word in enumerate(words):
+                # Remove punctuation if any
+                word = re.sub(r'[^\w\s]', '', word)
+                if (i > 0 and word and word[0].isupper() and 
+                    word.lower() not in stop_words and 
+                    len(word) > 1):
+                    entities.append(word)
+        
+        return list(set(entities))
+        
+    except Exception as e:
+        # Last resort - very simple extraction
+        print(f"Using simple fallback due to: {e}")
+        words = text.split()
+        entities = []
         for i, word in enumerate(words):
-            if (i > 0 and word[0].isupper() and 
-                word.lower() not in stop_words and 
-                len(word) > 1):
+            word = re.sub(r'[^\w\s]', '', word)
+            if word and word[0].isupper() and len(word) > 1:
                 entities.append(word)
-
-    return list(set(entities))
+        return list(set(entities))
     
 def extract_keywords(text, top_n=5):
     """Extract keywords from text."""
