@@ -610,7 +610,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-st.title("⁺‧₊˚ ཐི⋆♱⋆ཋྀ ˚₊‧⁺ Dialogue Visualiser Tool ⁺‧₊˚ ཐི⋆♱⋆ཋྀ ˚₊‧⁺")
+st.title("(∩˃o˂∩)♡ Dialogue Visualiser Tool")
 
 st.markdown("""
 This tool helps you gather and process dialogue data from various sources:
