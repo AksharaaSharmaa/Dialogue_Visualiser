@@ -289,6 +289,32 @@ analyzer.analyze()
 analyzer.generate_dashboard().write_html("example_analysis.html")
 ```
 
+## 🌱 Post-Submission Improvements
+
+After submitting my GSoC proposal, I've continued to develop and enhance the prototype to increase the project's potential impact and demonstrate my commitment.
+
+### 📊 User Feedback Integration
+
+I've created a **Post-Usage Feedback Form** to collect valuable insights from users testing the prototype. This addition strengthens the project by:
+
+- **Enabling Iterative Improvement**: The feedback loop allows me to continually refine the visualizations and features based on real user experiences
+- **Gathering Domain Expert Input**: Researchers, mediators, and community managers can provide specialized insights about what works best for their analytical needs
+- **Improving Usability**: Direct feedback on the interface helps identify pain points and opportunities to enhance the user experience
+- **Validating Design Choices**: Users can rate the effectiveness of different visualization approaches for specific analytical tasks
+- **Prioritizing Future Development**: Feedback helps identify which features provide the most value to users
+
+The form collects structured feedback on visualization effectiveness, usability, feature requests, and domain-specific applications, providing a strong foundation for ongoing development during the GSoC period.
+
+### 🔄 Implementation Details
+
+The feedback mechanism is implemented as:
+- An embedded form within the Streamlit application
+- A dedicated feedback page at the project website
+- Results stored in a structured database for analysis
+- Regular review cycles to incorporate findings into development
+
+This enhancement demonstrates my commitment to creating a tool that genuinely serves the needs of the discourse analysis community while showing my proactive approach to the GSoC project.
+
 ## 🤝 Contributing
 
 <div align="center">
