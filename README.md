@@ -23,13 +23,13 @@ This prototype was developed specifically for GFOSS as part of my proposal submi
 
 ### 🍊 Argumentation Analysis
 - **Argument Classification**: Automatically categorizes text into different argument types:
-  - Claims <span style="color:#5D9C59">■</span>
-  - Counterclaims <span style="color:#DF7861">■</span>
-  - Evidence <span style="color:#69C47F">■</span>
-  - Questions <span style="color:#A76F6F">■</span>
-  - Agreements <span style="color:#5D9C59">■</span>
-  - Disagreements <span style="color:#DF7861">■</span>
-  - Clarifications <span style="color:#FF9B50">■</span>
+  - Claims 🟩
+  - Counterclaims 🟧
+  - Evidence 🟢
+  - Questions 🟥
+  - Agreements 🟩
+  - Disagreements 🟧
+  - Clarifications 🟠
 - **Evidence-to-claim ratio calculation**
 - **Controversial claim detection** (claims with both agreements and disagreements)
 - **Persuasive user identification**
@@ -77,15 +77,15 @@ This prototype was developed specifically for GFOSS as part of my proposal submi
 <div align="center">
   <table>
     <tr>
-      <td align="center"><span style="color:#FF9B50">⬢</span> <b>Argumentation Graph</b><br><i>Logical structure of discussions</i></td>
-      <td align="center"><span style="color:#5D9C59">⬢</span> <b>Network View</b><br><i>User interaction patterns</i></td>
+      <td align="center">🟠 <b>Argumentation Graph</b><br><i>Logical structure of discussions</i></td>
+      <td align="center">🟩 <b>Network View</b><br><i>User interaction patterns</i></td>
     </tr>
     <tr>
-      <td align="center"><span style="color:#DF7861">⬢</span> <b>Conversation Timeline</b><br><i>Message flow over time</i></td>
-      <td align="center"><span style="color:#69C47F">⬢</span> <b>Topic Flow</b><br><i>Evolution of discussion themes</i></td>
+      <td align="center">🟧 <b>Conversation Timeline</b><br><i>Message flow over time</i></td>
+      <td align="center">🟢 <b>Topic Flow</b><br><i>Evolution of discussion themes</i></td>
     </tr>
     <tr>
-      <td align="center" colspan="2"><span style="color:#A76F6F">⬢</span> <b>Sentiment Analysis</b><br><i>Emotional tone throughout discussions</i></td>
+      <td align="center" colspan="2">🟥 <b>Sentiment Analysis</b><br><i>Emotional tone throughout discussions</i></td>
     </tr>
   </table>
 </div>
@@ -172,17 +172,43 @@ This prototype was developed specifically for GFOSS as part of my proposal submi
 <div align="center">
   <table>
     <tr>
-      <td><span style="color:#FF9B50">●</span> <b>ConvoKit</b></td>
-      <td><span style="color:#5D9C59">●</span> <b>YouTube discussions</b></td>
-      <td><span style="color:#FF9B50">●</span> <b>Text discussions</b></td>
+      <td>🟠 <b>ConvoKit</b></td>
+      <td>🟩 <b>YouTube discussions</b></td>
+      <td>🟠 <b>Text discussions</b></td>
     </tr>
     <tr>
-      <td><span style="color:#5D9C59">●</span> <b>Reddit threads</b></td>
-      <td><span style="color:#FF9B50">●</span> <b>Website content</b></td>
-      <td><span style="color:#5D9C59">●</span> <b>Forum discussions</b></td>
+      <td>🟩 <b>Reddit threads</b></td>
+      <td>🟠 <b>Website content</b></td>
+      <td>🟩 <b>Forum discussions</b></td>
     </tr>
   </table>
 </div>
+
+## 🌱 Post-Submission Improvements
+
+After submitting my GSoC proposal, I've continued to develop and enhance the prototype to increase the project's potential impact and demonstrate my commitment.
+
+### 📊 User Feedback Integration
+
+I've created a **Post-Usage Feedback Form** to collect valuable insights from users testing the prototype. This addition strengthens the project by:
+
+- **Enabling Iterative Improvement**: The feedback loop allows me to continually refine the visualizations and features based on real user experiences
+- **Gathering Domain Expert Input**: Researchers, mediators, and community managers can provide specialized insights about what works best for their analytical needs
+- **Improving Usability**: Direct feedback on the interface helps identify pain points and opportunities to enhance the user experience
+- **Validating Design Choices**: Users can rate the effectiveness of different visualization approaches for specific analytical tasks
+- **Prioritizing Future Development**: Feedback helps identify which features provide the most value to users
+
+The form collects structured feedback on visualization effectiveness, usability, feature requests, and domain-specific applications, providing a strong foundation for ongoing development during the GSoC period.
+
+### 🔄 Implementation Details
+
+The feedback mechanism is implemented as:
+- An embedded form within the Streamlit application
+- A dedicated feedback page at the project website
+- Results stored in a structured database for analysis
+- Regular review cycles to incorporate findings into development
+
+This enhancement demonstrates my commitment to creating a tool that genuinely serves the needs of the discourse analysis community while showing my proactive approach to the GSoC project.
 
 ## 🚀 Installation
 
@@ -288,32 +314,6 @@ analyzer = DiscourseAnalyzer(data)
 analyzer.analyze()
 analyzer.generate_dashboard().write_html("example_analysis.html")
 ```
-
-## 🌱 Post-Submission Improvements
-
-After submitting my GSoC proposal, I've continued to develop and enhance the prototype to increase the project's potential impact and demonstrate my commitment.
-
-### 📊 User Feedback Integration
-
-I've created a **Post-Usage Feedback Form** to collect valuable insights from users testing the prototype. This addition strengthens the project by:
-
-- **Enabling Iterative Improvement**: The feedback loop allows me to continually refine the visualizations and features based on real user experiences
-- **Gathering Domain Expert Input**: Researchers, mediators, and community managers can provide specialized insights about what works best for their analytical needs
-- **Improving Usability**: Direct feedback on the interface helps identify pain points and opportunities to enhance the user experience
-- **Validating Design Choices**: Users can rate the effectiveness of different visualization approaches for specific analytical tasks
-- **Prioritizing Future Development**: Feedback helps identify which features provide the most value to users
-
-The form collects structured feedback on visualization effectiveness, usability, feature requests, and domain-specific applications, providing a strong foundation for ongoing development during the GSoC period.
-
-### 🔄 Implementation Details
-
-The feedback mechanism is implemented as:
-- An embedded form within the Streamlit application
-- A dedicated feedback page at the project website
-- Results stored in a structured database for analysis
-- Regular review cycles to incorporate findings into development
-
-This enhancement demonstrates my commitment to creating a tool that genuinely serves the needs of the discourse analysis community while showing my proactive approach to the GSoC project.
 
 ## 🤝 Contributing
 
