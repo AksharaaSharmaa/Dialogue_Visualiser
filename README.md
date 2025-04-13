@@ -23,13 +23,13 @@ This prototype was developed specifically for GFOSS as part of my proposal submi
 
 ### 🍊 Argumentation Analysis
 - **Argument Classification**: Automatically categorizes text into different argument types:
-  - Claims 🟩
-  - Counterclaims 🟧
-  - Evidence 🟢
-  - Questions 🟥
-  - Agreements 🟩
-  - Disagreements 🟧
-  - Clarifications 🟠
+  - Claims
+  - Counterclaims
+  - Evidence
+  - Questions
+  - Agreements
+  - Disagreements
+  - Clarifications
 - **Evidence-to-claim ratio calculation**
 - **Controversial claim detection** (claims with both agreements and disagreements)
 - **Persuasive user identification**
@@ -77,15 +77,15 @@ This prototype was developed specifically for GFOSS as part of my proposal submi
 <div align="center">
   <table>
     <tr>
-      <td align="center">🟠 <b>Argumentation Graph</b><br><i>Logical structure of discussions</i></td>
-      <td align="center">🟩 <b>Network View</b><br><i>User interaction patterns</i></td>
+      <td align="center">🌷 <b>Argumentation Graph</b><br><i>Logical structure of discussions</i></td>
+      <td align="center">🌸 <b>Network View</b><br><i>User interaction patterns</i></td>
     </tr>
     <tr>
-      <td align="center">🟧 <b>Conversation Timeline</b><br><i>Message flow over time</i></td>
-      <td align="center">🟢 <b>Topic Flow</b><br><i>Evolution of discussion themes</i></td>
+      <td align="center">🌺 <b>Conversation Timeline</b><br><i>Message flow over time</i></td>
+      <td align="center">🪷 <b>Topic Flow</b><br><i>Evolution of discussion themes</i></td>
     </tr>
     <tr>
-      <td align="center" colspan="2">🟥 <b>Sentiment Analysis</b><br><i>Emotional tone throughout discussions</i></td>
+      <td align="center" colspan="2">🩷 <b>Sentiment Analysis</b><br><i>Emotional tone throughout discussions</i></td>
     </tr>
   </table>
 </div>
