@@ -19,5 +19,6 @@ numpy
 python-louvain
 google-generativeai
 torch
+python-dateutil
 youtube-comment-downloader
 importlib
