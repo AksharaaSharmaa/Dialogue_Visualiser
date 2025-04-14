@@ -17,7 +17,9 @@
 
 **Discourse Analyzer** empowers researchers, community managers, and communication specialists to uncover the hidden patterns within discussions. By harmoniously blending argumentation mapping, network visualization, timeline analysis, and topic modeling, this toolkit reveals the intricate tapestry of how conversations unfold.
 
-This prototype was developed specifically for GFOSS as part of my proposal submission. Use the Sample files as dataset. You can view the working demo at: [https://gsoc25-dialogue-visualiser-gfoss-prototype.streamlit.app/](https://gsoc25-dialogue-visualiser-gfoss-prototype.streamlit.app/)
+This prototype was developed specifically for GFOSS as part of my proposal submission. Use the Sample files as dataset. 
+
+Correct Demo Link: [https://gsoc25-dialogue-visualiser-gfoss-prototype.streamlit.app/](https://gsoc25-dialogue-visualiser-gfoss-prototype.streamlit.app/)
 
 ## 🌟 Key Features
 
