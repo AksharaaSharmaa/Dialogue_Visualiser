@@ -2,7 +2,7 @@ def create_argumentation_graph(df):
     import pandas as pd
     import plotly.graph_objects as go
     import networkx as nx
-    import rw
+    import re
     import nltk
     from nltk.tokenize import sent_tokenize
     from nltk.corpus import stopwords
