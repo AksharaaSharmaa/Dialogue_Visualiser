@@ -1,3 +1,5 @@
+⚠️ Note for GSoC Mentors: The deployed demo link in the proposal was incorrect due to a copy-paste error. The correct live demo is here
+
 # Discourse Analyzer
 
 <div align="center">
