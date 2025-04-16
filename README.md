@@ -1,4 +1,9 @@
-⚠️ Note for GSoC Mentors: The deployed demo link in the proposal was incorrect due to a copy-paste error. The correct live demo is here
+⚠️ **Note for GSoC Mentors**  
+The deployed demo link included in my GSoC proposal was submitted incorrectly due to a copy-paste error.  
+  
+✅ **Please use the correct live demo link below:**  
+[🔗 View Live Demo](https://gsoc25-dialogue-visualiser-gfoss-prototype.streamlit.app/)
+
 
 # Discourse Analyzer
 
