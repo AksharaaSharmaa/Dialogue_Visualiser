@@ -42,6 +42,15 @@ from Timeline_Visualisation import create_timeline_visualization
 from Topic_Visualisation import create_topic_trees
 import traceback
 from Argumentation_Visualisation import create_argumentation_graph
+from q_and_a import create_chatbot_interface
+
+import nltk
+
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('vader_lexicon')
+nltk.download('wordnet')
+
 
 # Enhanced CSS for a more beautiful and polished UI
 st.markdown("""
@@ -609,8 +618,16 @@ st.markdown("""
 <div class="gradient-bg"></div>
 """, unsafe_allow_html=True)
 
+# Download necessary NLTK resources
+@st.cache_resource
+def load_nltk_resources():
+    nltk.download('vader_lexicon')
+    nltk.download('punkt')
+    nltk.download('stopwords')
 
-st.title("(∩˃o˂∩)♡ Dialogue Visualiser Tool")
+load_nltk_resources()
+
+st.title("👁〰👁 Dialogue Visualiser Tool")
 
 st.markdown("""
 This tool helps you gather and process dialogue data from various sources:
@@ -947,73 +964,26 @@ def analyze_sentiment(text):
         return {"compound": 0, "pos": 0, "neu": 0, "neg": 0}
 
 def extract_entities(text):
-    """Simple entity extraction with explicit PunktSentenceTokenizer."""
-    import nltk
-    import os
-    import re
-    from nltk.tokenize import word_tokenize
-    from nltk.corpus import stopwords
+    """Simple entity extraction."""
+    # This is a simplified version. In a real implementation,
+    # you might want to use spaCy or another NER tool
+    words = word_tokenize(text)
+    stop_words = set(stopwords.words('english'))
     
-    # Download required resources
-    nltk_data_dir = '/mount/src/gsoc_25_dialogue_visualiser/nltk_data'
-    os.makedirs(nltk_data_dir, exist_ok=True)
-    nltk.data.path.insert(0, nltk_data_dir)
+    # Simple heuristic: capitalized words not at the beginning of sentences
+    sentences = sent_tokenize(text)
     
-    try:
-        nltk.download('punkt', download_dir=nltk_data_dir)
-        nltk.download('stopwords', download_dir=nltk_data_dir)
-    except:
-        pass
-    
-    try:
-        # Avoid using sent_tokenize which requires punkt_tab
-        # Instead, use PunktSentenceTokenizer directly with English training
-        from nltk.tokenize.punkt import PunktSentenceTokenizer
-        tokenizer = PunktSentenceTokenizer()
-        sentences = tokenizer.tokenize(text)
-        
-        # Or as fallback, use regex for sentence splitting
-        if not sentences:
-            sentences = [s.strip() for s in re.split(r'[.!?]+', text) if s.strip()]
-        
-        # Get stopwords
-        try:
-            stop_words = set(stopwords.words('english'))
-        except:
-            # Fallback stopwords if NLTK fails
-            stop_words = {'the', 'a', 'an', 'and', 'but', 'or', 'for', 'nor', 'on', 
-                         'at', 'to', 'from', 'by', 'with', 'in', 'is', 'are', 'was', 'were'}
-        
-        # Extract entities
-        entities = []
-        for sentence in sentences:
-            try:
-                words = word_tokenize(sentence)
-            except:
-                # Fallback to simple splitting if word_tokenize fails
-                words = sentence.split()
-                
-            for i, word in enumerate(words):
-                # Remove punctuation if any
-                word = re.sub(r'[^\w\s]', '', word)
-                if (i > 0 and word and word[0].isupper() and 
-                    word.lower() not in stop_words and 
-                    len(word) > 1):
-                    entities.append(word)
-        
-        return list(set(entities))
-        
-    except Exception as e:
-        # Last resort - very simple extraction
-        print(f"Using simple fallback due to: {e}")
-        words = text.split()
-        entities = []
+    entities = []
+    for sentence in sentences:
+        words = word_tokenize(sentence)
         for i, word in enumerate(words):
-            word = re.sub(r'[^\w\s]', '', word)
-            if word and word[0].isupper() and len(word) > 1:
+            if (i > 0 and word[0].isupper() and 
+                word.lower() not in stop_words and 
+                len(word) > 1):
                 entities.append(word)
-        return list(set(entities))
     
+    return list(set(entities))
+
 def extract_keywords(text, top_n=5):
     """Extract keywords from text."""
     words = word_tokenize(text.lower())
@@ -1155,7 +1125,7 @@ if data_loaded and messages_df is not None and not messages_df.empty:
     
 
 # Show data tabs
-    tabs = st.tabs(["Raw Data & NLP Results", "Network Visualisation", "Timeline Visualisation", "Topic Visualisation & Sentiment Heatmap", "Argumentation Graph"])
+    tabs = st.tabs(["Raw Data & NLP Results", "Network Visualisation", "Timeline Visualisation", "Topic Visualisation & Sentiment Heatmap", "Argumentation Graph", "Chatbot Q&A"])
     
     with tabs[0]:
         st.dataframe(processed_df)
@@ -1527,7 +1497,20 @@ if data_loaded and messages_df is not None and not messages_df.empty:
             st.info("Argumentation analysis requires text data. Make sure your data has a 'text' column with conversation messages.")
 
 
-
+    with tabs[5]:  # Chatbot Q&A tab
+        if 'data_loaded' in locals() and data_loaded and 'processed_df' in locals() and processed_df is not None and not processed_df.empty:
+            try:
+                create_chatbot_interface(processed_df)
+            except Exception as e:
+                st.error(f"Error initializing chatbot: {str(e)}")
+                st.info("Please make sure your Gemini API key is valid and that you have an internet connection.")
+        else:
+            st.info("Please load conversation data first to use the chatbot feature.")
+            
+            # Show loading sample data suggestion
+            if st.button("Load Sample Data for Testing"):
+                st.session_state.load_sample = True
+                st.rerun()
 
 
 
