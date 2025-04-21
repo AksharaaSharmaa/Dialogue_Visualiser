@@ -63,51 +63,75 @@ def load_nltk_resources():
 
 load_nltk_resources()
 
+import streamlit as st
 import time
 
-# CSS for animation
+# CSS for animation with orange title and more fun elements
 st.markdown("""
 <style>
     @keyframes wave {
         0%, 100% { transform: rotate(0deg); }
-        25% { transform: rotate(10deg); }
-        75% { transform: rotate(-10deg); }
+        25% { transform: rotate(15deg); }
+        75% { transform: rotate(-15deg); }
     }
     
     @keyframes bounce {
         0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
+        50% { transform: translateY(-15px); }
     }
     
-    @keyframes colorChange {
-        0% { color: #FF9AA2; }
-        25% { color: #FFDAC1; }
-        50% { color: #B5EAD7; }
-        75% { color: #C7CEEA; }
-        100% { color: #FF9AA2; }
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
     }
     
     .bear-left {
         display: inline-block;
-        animation: wave 2s infinite;
-        font-size: 2.5rem;
+        animation: wave 2s infinite, pulse 3s infinite alternate;
+        font-size: 3rem;
+        margin-right: 10px;
     }
     
     .bear-right {
         display: inline-block;
-        animation: wave 2s infinite;
+        animation: wave 2s infinite, pulse 3s infinite alternate;
         animation-delay: 0.5s;
-        font-size: 2.5rem;
+        font-size: 3rem;
+        margin-left: 10px;
     }
     
     .title-text {
         display: inline-block;
-        animation: colorChange 6s infinite, bounce 2s infinite;
-        font-size: 2.2rem;
+        animation: bounce 2s infinite;
+        font-size: 2.5rem;
         font-weight: bold;
-        padding: 0 10px;
+        color: #FF8C00;
+        background: linear-gradient(90deg, #FF8C00, #FFA500, #FF8C00);
+        background-size: 200% auto;
+        background-clip: text;
+        -webkit-background-clip: text;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        padding: 0 15px;
+        letter-spacing: 1px;
+    }
+    
+    .title-container {
+        background-color: #FFF2E6;
+        border-radius: 15px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(255, 140, 0, 0.2);
+        margin-bottom: 20px;
     }
 </style>
+""", unsafe_allow_html=True)
+
+# Animated title with bears
+st.markdown("""
+<div class="title-container" style="text-align: center; margin-top: 2rem;">
+    <span class="bear-left">ʕ•ᴥ•ʔ</span>
+    <span class="title-text">Dialogue Visualiser Tool</span>
+    <span class="bear-right">(ᵔᴥᵔ)</span>
+</div>
 """, unsafe_allow_html=True)
 
 # Animated title with bears
