@@ -127,15 +127,6 @@ st.markdown("""
 
 # Animated title with bears
 st.markdown("""
-<div class="title-container" style="text-align: center; margin-top: 2rem;">
-    <span class="bear-left">ʕ•ᴥ•ʔ</span>
-    <span class="title-text">Dialogue Visualiser Tool</span>
-    <span class="bear-right">(ᵔᴥᵔ)</span>
-</div>
-""", unsafe_allow_html=True)
-
-# Animated title with bears
-st.markdown("""
 <div style="text-align: center; margin-top: 2rem;">
     <span class="bear-left">ʕ•ᴥ•ʔ</span>
     <span class="title-text">Dialogue Visualiser Tool</span>
