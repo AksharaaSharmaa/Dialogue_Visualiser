@@ -63,7 +63,7 @@ def load_nltk_resources():
 
 load_nltk_resources()
 
-st.title("ʕ•ᴥ•ʔ Dialogue Visualiser Tool ᵔᴥᵔ")
+st.title("ʕ•ᴥ•ʔ Dialogue Visualiser Tool (ᵔᴥᵔ)")
 
 st.markdown("""
 ## Application Features
