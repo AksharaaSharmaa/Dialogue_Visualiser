@@ -66,9 +66,7 @@ load_nltk_resources()
 st.title("ʕ•ᴥ•ʔ Dialogue Visualiser Tool")
 
 st.markdown("""
-Analyze dialogue and discussions from multiple sources with powerful conversational insights:
-
-## Data Sources
+## Application Features
 1. **Personal Data Analysis** - Upload your own conversation data files for custom insights
 2. **Various Data Formats Supported** - CSV, ConvoKit, JSON, TXT and many more to come
 3. **Reddit Thread Analysis** - Process complete Reddit discussions including posts, comments, and reply chains
