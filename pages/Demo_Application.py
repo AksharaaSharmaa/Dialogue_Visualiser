@@ -73,7 +73,8 @@ Analyze dialogue and discussions from multiple sources with powerful conversatio
 2. **Various Data Formats Supported** - CSV, ConvoKit, JSON, TXT and many more to come
 3. **Reddit Thread Analysis** - Process complete Reddit discussions including posts, comments, and reply chains
 4. **YouTube Content Processing** - Extract transcripts from videos with subtitles plus audience comments for comprehensive analysis
-5. **Downloadable Dataset** - CSV, Excel, JSON and combined as a zip file
+5. **Interactive Chatbot** - Ask questions to gain better underdtanding about the data and visualisations
+6. **Downloadable Dataset** - CSV, Excel, JSON and combined as a zip file
 
 Upload your data or connect to online sources to discover patterns, sentiment, key topics, and engagement metrics across conversations.
 """)
