@@ -1,6 +1,6 @@
 def frontend():
     import streamlit as st
-    
+
     # Enhanced CSS for a more beautiful and polished UI
     st.markdown("""
     <style>
