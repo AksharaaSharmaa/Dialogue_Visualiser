@@ -26,6 +26,19 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Function to load and display a GIF in the sidebar
+def sidebar_gif(gif_path):
+    with open(gif_path, "rb") as file_:
+        contents = file_.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    st.sidebar.markdown(
+        f'<img src="data:image/gif;base64,{data_url}" alt="sidebar gif" width="100%">',
+        unsafe_allow_html=True,
+    )
+    
+sidebar_gif("assets/sidebar_animation.gif")
+st.sidebar.info("Explore online discussions with powerful visualization tools")
+
 # Enhanced CSS for a more beautiful and polished UI
 st.markdown("""
 <style>
