@@ -37,6 +37,8 @@ def sidebar_gif(gif_path):
     )
     
 sidebar_gif("assets/sidebar_animation.gif")
+
+
 st.sidebar.info("Explore online discussions with powerful visualization tools")
 
 # Enhanced CSS for a more beautiful and polished UI
