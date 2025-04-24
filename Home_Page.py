@@ -16,7 +16,6 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 import base64
-import base64
 from pathlib import Path
 
 # Set page configuration
