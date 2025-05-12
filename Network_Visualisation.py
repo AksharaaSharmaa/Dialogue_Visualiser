@@ -411,14 +411,14 @@ def create_network_visualization(df):
     # Use Gemini to generate insights
     try:
         # Configure Gemini API
-        
-        api_key = "AIzaSyDVh44jf0dulFB1qP8FwnrHb92DY9gBfdU"
+        api_key = st.secrets["GEMINI_API_KEY"]
         if not api_key:
-            raise ValueError("GEMINI_API_KEY is not set in the code")
-
-        
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash')
+            raise ValueError("GEMINI_API_KEY is empty in secrets")
+    except KeyError:
+        raise ValueError("GEMINI_API_KEY is not set in Streamlit secrets")
+    
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel('gemini-1.5-flash')
         
         # Prepare data for Gemini
         network_summary = f"""
