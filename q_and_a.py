@@ -7,7 +7,7 @@ def create_chatbot_interface(processed_df):
     st.subheader("💬 Chat with Your Data")
     
     # Set up the API key
-    GEMINI_API_KEY = "AIzaSyDVh44jf0dulFB1qP8FwnrHb92DY9gBfdU"  # Replace with your actual API key
+    GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]  # Replace with your actual API key
     genai.configure(api_key=GEMINI_API_KEY)
     
     # Add explanation
