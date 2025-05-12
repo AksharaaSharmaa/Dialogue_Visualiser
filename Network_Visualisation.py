@@ -417,8 +417,8 @@ def create_network_visualization(df):
     except KeyError:
         raise ValueError("GEMINI_API_KEY is not set in Streamlit secrets")
     
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-1.5-flash')
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel('gemini-1.5-flash')
         
         # Prepare data for Gemini
         network_summary = f"""
