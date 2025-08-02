@@ -19,7 +19,7 @@
 
 Use the Sample files as dataset. 
 
-Correct Demo Link: [https://gsoc25-dialogue-visualiser-gfoss-prototype.streamlit.app/]((https://dialogue-visualiser-by-akshara.streamlit.app/))
+Correct Demo Link: [https://dialogue-visualiser-by-akshara.streamlit.app/]
 
 ## 🌟 Key Features
 
