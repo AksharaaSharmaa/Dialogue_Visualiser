@@ -19,7 +19,7 @@
 
 Use the Sample files as dataset. 
 
-Correct Demo Link: [https://dialogue-visualiser-by-akshara.streamlit.app/]
+https://dialogue-visualiser-by-akshara.streamlit.app/
 
 ## 🌟 Key Features
 
