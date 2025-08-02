@@ -17,7 +17,7 @@
 
 **Discourse Analyzer** empowers researchers, community managers, and communication specialists to uncover the hidden patterns within discussions. By harmoniously blending argumentation mapping, network visualization, timeline analysis, and topic modeling, this toolkit reveals the intricate tapestry of how conversations unfold.
 
-This prototype was developed specifically for GFOSS as part of my proposal submission. Use the Sample files as dataset. 
+Use the Sample files as dataset. 
 
 Correct Demo Link: [https://gsoc25-dialogue-visualiser-gfoss-prototype.streamlit.app/](https://gsoc25-dialogue-visualiser-gfoss-prototype.streamlit.app/)
 
@@ -186,9 +186,6 @@ Correct Demo Link: [https://gsoc25-dialogue-visualiser-gfoss-prototype.streamlit
   </table>
 </div>
 
-## 🌱 Post-Submission Improvements
-
-After submitting my GSoC proposal, I've continued to develop and enhance the prototype to increase the project's potential impact and demonstrate my commitment.
 
 ### 📊 User Feedback Integration
 
@@ -210,7 +207,7 @@ The feedback mechanism is implemented as:
 - Results stored in a structured database for analysis
 - Regular review cycles to incorporate findings into development
 
-This enhancement demonstrates my commitment to creating a tool that genuinely serves the needs of the discourse analysis community while showing my proactive approach to the GSoC project.
+This enhancement demonstrates my commitment to creating a tool that genuinely serves the needs of the discourse analysis community while showing my proactive approach to the project.
 
 ## 🚀 Installation
 
@@ -342,7 +339,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📞 Contact
 
 <div align="center">
-  <p>Project developed as a prototype for GFOSS as part of my GSoC 2025 proposal.</p>
+  <p>Project developed by Akshara ❤️.</p>
 </div>
 
 ---
